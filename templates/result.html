@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ガチャ結果</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">ガチャ結果</h1>
+        <div class="row">
+            {% for result in results %}
+            <div class="col-md-4 text-center">
+                <h3>{{ result.rarity }}</h3>
+                {% if result.rarity == "SR+" %}
+                <img src="{{ url_for('static', filename=result.image) }}" class="img-fluid" alt="{{ result.character }}">
+                {% else %}
+                <img src="{{ url_for('static', filename=result.image) }}" class="img-fluid" alt="{{ result.rarity }}">
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/" class="btn btn-primary mt-3">戻る</a>
+    </div>
+</body>
+</html>
